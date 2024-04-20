@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { DemoBox } from '../components/demo-box';
 import { ColorPalette } from '../components/color-palette';
+import { TypograpiesList } from '../components/typograpies-list';
 
 const MyBox = styled(DemoBox)`
   display: flex;
@@ -36,6 +37,7 @@ const AboutPage = () => {
         </li>
       </ul>
       <ColorPalette />
+      <TypograpiesList />
       <MyBox m="5">DemoBox</MyBox>
     </>
   );
