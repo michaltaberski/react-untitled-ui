@@ -1,6 +1,9 @@
 // Styles
 import 'sanitize.css';
-import '@fontsource/inter/500.css';
+import '@fontsource/inter/400.css'; // regular
+import '@fontsource/inter/500.css'; // medium
+import '@fontsource/inter/600.css'; // semi-bold
+import '@fontsource/inter/700.css'; // bold
 import '@radix-ui/themes/layout.css';
 import './index.css';
 
