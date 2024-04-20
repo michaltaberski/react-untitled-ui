@@ -1,4 +1,4 @@
-import { MarginProps, extractMarginProps } from './utls';
+import { MarginProps, extractMarginProps } from '../utls';
 
 export const DemoBox = (p: MarginProps & { children?: React.ReactNode }) => {
   const betterProps = extractMarginProps(p);

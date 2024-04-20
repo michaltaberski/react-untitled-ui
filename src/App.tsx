@@ -1,7 +1,12 @@
-import { DemoBox } from './DemoBox';
+import Layout from './components/layout';
+import AboutPage from './pages/about';
 
 function App() {
-  return <DemoBox m="2">Demo box</DemoBox>;
+  return (
+    <Layout>
+      <AboutPage />
+    </Layout>
+  );
 }
 
 export default App;
