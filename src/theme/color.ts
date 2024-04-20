@@ -183,6 +183,10 @@ const orange = {
 } as const;
 
 export const color = {
+  common: {
+    white: '#FFF',
+    black: '#000',
+  },
   grey,
   brand,
   error,

@@ -1,4 +1,5 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+import { mapValues } from 'lodash';
 
 export type TypographyDef = {
   fontSize: string;
@@ -106,3 +107,12 @@ export const getTextCssBlock = (
   letter-spacing: ${typographyDefs[typography].letterSpacing};
   font-weight: ${FONT_WEIGHT_MAP[fontWeight]};
 `;
+
+export const TEXT_COMPONENTS_MAP = mapValues(typographyDefs, (_, key) =>
+  mapValues(
+    FONT_WEIGHT_MAP,
+    (_, weightKey) => styled.span`
+      ${getTextCssBlock(key as Typography, weightKey as FontWeight)}
+    `,
+  ),
+);

@@ -2,10 +2,17 @@ import { ColorPalette } from '../components/color-palette';
 import { TypograpiesList } from '../components/typograpies-list';
 import { Icon, getIconNames } from '../components/icon';
 import { Box, Flex } from '@radix-ui/themes';
+import { Page, PageTitle } from '../components/page';
+import { Text } from '../components/text';
 
 const AboutPage = () => {
   return (
-    <>
+    <Page>
+      <PageTitle>Welcome back, Olivia</PageTitle>
+      <Text variant="display2xl" weight="bold">
+        This is demo text component
+      </Text>
+
       <h2>Links</h2>
       <ul>
         <li>
@@ -32,6 +39,7 @@ const AboutPage = () => {
       </ul>
       <ColorPalette />
       <TypograpiesList />
+      <h1>Icons</h1>
       <Flex wrap="wrap">
         {getIconNames().map(iconName => (
           <Box key={iconName} m="1">
@@ -39,7 +47,7 @@ const AboutPage = () => {
           </Box>
         ))}
       </Flex>
-    </>
+    </Page>
   );
 };
 
