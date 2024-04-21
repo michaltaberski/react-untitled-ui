@@ -2,8 +2,8 @@ import { Outlet } from 'react-router-dom';
 import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from '../components/slot-link';
-import { getTextCssBlock } from '../theme/typography';
-import { getColor } from '../theme/color';
+import { getTextCssBlock } from '../tokens/typography';
+import { getColor } from '../tokens/color';
 import AppHeader, { BaseLayoutContainer } from './app-header';
 
 const MenuItem = styled.button`

@@ -3,8 +3,8 @@ import {
   FontKey,
   TEXT_COMPONENTS_MAP,
   splitFontKey,
-} from '../theme/typography';
-import { ColorKey, getColor } from '../theme/color';
+} from '../tokens/typography';
+import { ColorKey, getColor } from '../tokens/color';
 TEXT_COMPONENTS_MAP;
 
 export const Text = forwardRef(

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '../theme/color';
+import { getColor } from '../tokens/color';
 import Logo from './logo';
 import { Flex } from '@radix-ui/themes';
 

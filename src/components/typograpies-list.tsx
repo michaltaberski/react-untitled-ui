@@ -5,7 +5,7 @@ import {
   FontWeight,
   Typography,
   typographyDefs,
-} from '../theme/typography';
+} from '../tokens/typography';
 import { Text } from './text';
 
 const typographies = Object.keys(typographyDefs) as Typography[];

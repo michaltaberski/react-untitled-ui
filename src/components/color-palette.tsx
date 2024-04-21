@@ -1,5 +1,5 @@
 import { Box, Flex, FlexProps } from '@radix-ui/themes';
-import { palettes } from '../theme/color';
+import { palettes } from '../tokens/color';
 import { Text } from './text';
 
 const Swatch = ({ color, size = 96 }: { color: string; size?: number }) => (
