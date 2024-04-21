@@ -183,17 +183,13 @@ const orange = {
 } as const;
 
 export const color = {
-  common: {
-    white: '#FFF',
-    black: '#000',
-  },
   grey,
   brand,
   error,
   warning,
   success,
-  blueGray,
-  blueLight,
+  'blue-gray': blueGray,
+  'blue-light': blueLight,
   blue,
   indigo,
   purple,
@@ -202,4 +198,15 @@ export const color = {
   orange,
 } as const;
 
-export type Color = typeof color;
+type PaletteKey = keyof typeof color;
+
+type ShadeKey = keyof typeof grey;
+
+export type ColorKey = `${PaletteKey}-${ShadeKey}`;
+
+export const getColor = (colorKey: ColorKey) => {
+  const [paletteString, shadeString] = colorKey.split(/-(\d+)$/);
+  const palette = paletteString as PaletteKey;
+  const shade = parseInt(shadeString, 10) as ShadeKey;
+  return color[palette][shade];
+};

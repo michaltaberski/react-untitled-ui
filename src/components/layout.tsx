@@ -5,12 +5,10 @@ import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from './slot-link';
 import { getTextCssBlock } from '../theme/typography';
-import { color } from '../theme/color';
-
-const RedFlex = styled(Flex)``;
+import { getColor } from '../theme/color';
 
 const HeaderWrapper = styled(Flex).attrs({})`
-  border-bottom: 1px solid ${color.grey[200]};
+  border-bottom: 1px solid ${getColor('grey-200')};
   padding: 16px;
 `;
 
@@ -18,9 +16,9 @@ const MenuItem = styled.button`
   ${getTextCssBlock('textSm', 'medium')}
   text-align: left;
   padding: 10px 16px;
-  color: ${color.grey[700]};
+  color: ${getColor('grey-700')};
   &:hover {
-    background-color: ${color.grey[50]};
+    background-color: ${getColor('grey-50')};
   }
 `;
 
@@ -36,7 +34,10 @@ const Layout = () => {
         </Text>
       </HeaderWrapper>
       <Flex gap="2">
-        <RedFlex direction="column" style={{ flex: 2 }}>
+        <Flex
+          direction="column"
+          style={{ flex: 2, padding: 16, background: '#fff' }}
+        >
           <SlotLink to="/">
             <MenuItem>Home</MenuItem>
           </SlotLink>
@@ -52,10 +53,10 @@ const Layout = () => {
           <SlotLink to="/typographies">
             <MenuItem>Typographies</MenuItem>
           </SlotLink>
-        </RedFlex>
-        <RedFlex style={{ flex: 10 }}>
+        </Flex>
+        <Flex style={{ flex: 10 }}>
           <Outlet />
-        </RedFlex>
+        </Flex>
       </Flex>
     </>
   );
