@@ -15,6 +15,7 @@ export const Text = forwardRef(
     }: {
       variant: Typography;
       weight: FontWeight;
+      as?: keyof JSX.IntrinsicElements;
       children?: React.ReactNode;
     },
     ref,

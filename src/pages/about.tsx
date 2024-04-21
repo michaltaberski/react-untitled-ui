@@ -1,19 +1,20 @@
 import { ColorPalette } from '../components/color-palette';
 import { TypograpiesList } from '../components/typograpies-list';
-import { Icon, getIconNames } from '../components/icon';
-import { Box, Flex } from '@radix-ui/themes';
 import { Page, PageTitle } from '../components/page';
 import { Text } from '../components/text';
+import { withDefaultProps } from '../utils/with-default-props';
+
+const Subtitle = withDefaultProps(Text, {
+  variant: 'textLg',
+  weight: 'semibold',
+  as: 'h2',
+});
 
 const AboutPage = () => {
   return (
     <Page>
-      <PageTitle>Welcome back, Olivia</PageTitle>
-      <Text variant="display2xl" weight="bold">
-        This is demo text component
-      </Text>
-
-      <h2>Links</h2>
+      <PageTitle>UntitledUI</PageTitle>
+      <Subtitle>Links</Subtitle>
       <ul>
         <li>
           <a href="https://www.untitledui.com/" target="_blank">
@@ -39,14 +40,6 @@ const AboutPage = () => {
       </ul>
       <ColorPalette />
       <TypograpiesList />
-      <h1>Icons</h1>
-      <Flex wrap="wrap">
-        {getIconNames().map(iconName => (
-          <Box key={iconName} m="1">
-            <Icon iconName={iconName} size={24} />
-          </Box>
-        ))}
-      </Flex>
     </Page>
   );
 };
