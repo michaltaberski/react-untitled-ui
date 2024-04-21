@@ -36,11 +36,13 @@ const Layout = () => {
       <Flex gap="2">
         <Flex
           direction="column"
-          style={{ flex: 2, padding: 16, background: '#fff' }}
+          style={{ width: 225, padding: 16, background: '#fff' }}
         >
+          {/*
           <SlotLink to="/">
             <MenuItem>Home</MenuItem>
           </SlotLink>
+          */}
           <SlotLink to="/colors">
             <MenuItem>Colors</MenuItem>
           </SlotLink>
