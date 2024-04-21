@@ -16,7 +16,7 @@ const AppSidebar = styled(Flex).attrs({ direction: 'column' })`
 `;
 
 const AppMain = styled(Flex)`
-  padding-top: 32px;
+  padding: 32px;
   max-width: 1280px;
 `;
 
