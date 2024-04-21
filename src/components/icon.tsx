@@ -1,7 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { MarginProps } from '@radix-ui/themes/props';
 import { extractMarginProps } from '../utls';
-import { useEffect, useState } from 'react';
 
 const ICONS: Partial<Record<IconName, string>> = {};
 const ICONS_IMPORT = import.meta.glob('../assets/icons/*.svg', { as: 'raw' });
@@ -47,14 +46,6 @@ export const Icon = (p: IconProps) => {
       dangerouslySetInnerHTML={{ __html: iconSrc }}
     />
   );
-};
-
-export const useIconsLoaded = () => {
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    loadIcons().then(() => setLoaded(true));
-  }, []);
-  return loaded;
 };
 
 export type IconName =

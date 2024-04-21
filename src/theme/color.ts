@@ -182,7 +182,7 @@ const orange = {
   900: '#7E2410',
 } as const;
 
-export const color = {
+export const palettes = {
   grey,
   brand,
   error,
@@ -198,15 +198,44 @@ export const color = {
   orange,
 } as const;
 
-type PaletteKey = keyof typeof color;
+export const commonColors = {
+  white: '#FFFFFF',
+  black: '#000000',
+} as const;
+
+type PaletteKey = keyof typeof palettes;
 
 type ShadeKey = keyof typeof grey;
 
-export type ColorKey = `${PaletteKey}-${ShadeKey}`;
+type PaletteColor = `${PaletteKey}-${ShadeKey}`;
 
-export const getColor = (colorKey: ColorKey) => {
+type CommonColor = keyof typeof commonColors;
+
+type AliasColor = keyof typeof aliases;
+
+export type ColorKey = PaletteColor | CommonColor | AliasColor;
+
+const getIsCommonColor = (colorKey: ColorKey): colorKey is CommonColor =>
+  Object.keys(commonColors).includes(colorKey);
+
+const aliases = {
+  divider: 'grey-200',
+} as const;
+
+export const getColorKey = (colorKey: ColorKey) => {
+  if (colorKey in aliases) {
+    return aliases[colorKey as AliasColor];
+  }
+  return colorKey;
+};
+
+export const getColor = (colorKeyOrAlias: ColorKey) => {
+  const colorKey = getColorKey(colorKeyOrAlias);
+  if (getIsCommonColor(colorKey)) {
+    return commonColors[colorKey];
+  }
   const [paletteString, shadeString] = colorKey.split(/-(\d+)$/);
   const palette = paletteString as PaletteKey;
   const shade = parseInt(shadeString, 10) as ShadeKey;
-  return color[palette][shade];
+  return palettes[palette][shade];
 };

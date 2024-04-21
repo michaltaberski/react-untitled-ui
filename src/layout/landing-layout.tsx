@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { useIconsLoaded } from './icon';
 import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
-import { SlotLink } from './slot-link';
+import { SlotLink } from '../components/slot-link';
 import { getTextCssBlock } from '../theme/typography';
 import { getColor } from '../theme/color';
-import AppHeader, { BaseLayoutContainer } from '../layout/app-header';
+import AppHeader, { BaseLayoutContainer } from './app-header';
 
 const MenuItem = styled.button`
   ${getTextCssBlock('textSm', 'medium')}
@@ -17,10 +16,7 @@ const MenuItem = styled.button`
   }
 `;
 
-const Layout = () => {
-  const iconsLoaded = useIconsLoaded();
-  if (!iconsLoaded) return null;
-
+const LandingLayout = () => {
   return (
     <>
       <AppHeader />
@@ -55,4 +51,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default LandingLayout;

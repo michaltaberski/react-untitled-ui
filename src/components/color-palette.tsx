@@ -1,5 +1,5 @@
 import { Box, Flex, FlexProps } from '@radix-ui/themes';
-import { color } from '../theme/color';
+import { palettes } from '../theme/color';
 import { Text } from './text';
 
 const Swatch = ({ color, size = 96 }: { color: string; size?: number }) => (
@@ -9,7 +9,7 @@ const Swatch = ({ color, size = 96 }: { color: string; size?: number }) => (
 export const ColorPalette = (p: FlexProps) => {
   return (
     <Flex direction="column" gap="8" {...p}>
-      {Object.entries(color).map(([colorName, colorPalette]) => (
+      {Object.entries(palettes).map(([colorName, colorPalette]) => (
         <Flex key={colorName} direction="column">
           <h1>{colorName}</h1>
           <Flex gap="4" wrap="wrap">
