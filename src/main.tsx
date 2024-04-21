@@ -1,5 +1,5 @@
 // Styles
-import 'sanitize.css';
+import 'reset-css';
 import '@fontsource/inter/400.css'; // regular
 import '@fontsource/inter/500.css'; // medium
 import '@fontsource/inter/600.css'; // semi-bold
