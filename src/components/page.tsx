@@ -7,6 +7,5 @@ export const PageTitle = styled.h1`
 `;
 
 export const Page = styled(Flex).attrs(() => ({
-  m: '6',
   direction: 'column',
 }))``;

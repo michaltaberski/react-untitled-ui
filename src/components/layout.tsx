@@ -1,16 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { useIconsLoaded } from './icon';
-import { Text } from './text';
 import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from './slot-link';
 import { getTextCssBlock } from '../theme/typography';
 import { getColor } from '../theme/color';
-
-const HeaderWrapper = styled(Flex).attrs({})`
-  border-bottom: 1px solid ${getColor('grey-200')};
-  padding: 16px;
-`;
+import AppHeader, { BaseLayoutContainer } from '../layout/app-header';
 
 const MenuItem = styled.button`
   ${getTextCssBlock('textSm', 'medium')}
@@ -28,16 +23,12 @@ const Layout = () => {
 
   return (
     <>
-      <HeaderWrapper>
-        <Text variant="displayXl" weight="medium">
-          Untitled UI
-        </Text>
-      </HeaderWrapper>
-      <Flex gap="2">
-        <Flex
-          direction="column"
-          style={{ width: 225, padding: 16, background: '#fff' }}
-        >
+      <AppHeader />
+      <BaseLayoutContainer
+        gap="20px"
+        style={{ paddingTop: 20, paddingBottom: 20 }}
+      >
+        <Flex direction="column" style={{ width: 225 }}>
           {/*
           <SlotLink to="/">
             <MenuItem>Home</MenuItem>
@@ -59,7 +50,7 @@ const Layout = () => {
         <Flex style={{ flex: 10 }}>
           <Outlet />
         </Flex>
-      </Flex>
+      </BaseLayoutContainer>
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Icon, getIconNames } from '../components/icon';
 const IconsPage = () => {
   return (
     <Page>
-      <PageTitle>Colors</PageTitle>
+      <PageTitle>Icons</PageTitle>
       <Flex wrap="wrap">
         {getIconNames().map(iconName => (
           <Box key={iconName} m="1">
