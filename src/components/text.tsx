@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import {
-  FontWeight,
+  FontKey,
   TEXT_COMPONENTS_MAP,
-  Typography,
+  splitFontKey,
 } from '../theme/typography';
 import { ColorKey, getColor } from '../theme/color';
 TEXT_COMPONENTS_MAP;
@@ -10,14 +10,12 @@ TEXT_COMPONENTS_MAP;
 export const Text = forwardRef(
   (
     {
-      weight,
-      variant,
       style = {},
       color,
+      font,
       ...rest
     }: {
-      variant: Typography;
-      weight: FontWeight;
+      font: FontKey;
       color?: ColorKey;
       style?: React.CSSProperties;
       as?: keyof JSX.IntrinsicElements;
@@ -29,6 +27,7 @@ export const Text = forwardRef(
       ...(color ? { color: getColor(color) } : {}),
       ...style,
     };
+    const [variant, weight] = splitFontKey(font);
     const Comp = TEXT_COMPONENTS_MAP[variant][weight];
     Comp.displayName = 'Text';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

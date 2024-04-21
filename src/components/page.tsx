@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { getTextCssBlock } from '../theme/typography';
 
 export const PageTitle = styled.h1`
-  ${getTextCssBlock('displaySm', 'semibold')}
+  ${getTextCssBlock('display-sm/semibold')}
 `;
 
 export const Page = styled(Flex).attrs(() => ({

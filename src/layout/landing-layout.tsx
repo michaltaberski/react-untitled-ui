@@ -7,7 +7,7 @@ import { getColor } from '../theme/color';
 import AppHeader, { BaseLayoutContainer } from './app-header';
 
 const MenuItem = styled.button`
-  ${getTextCssBlock('textSm', 'medium')}
+  ${getTextCssBlock('text-sm/medium')}
   text-align: left;
   padding: 10px 16px;
   color: ${getColor('grey-700')};

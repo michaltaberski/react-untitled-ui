@@ -44,7 +44,7 @@ const AppMain = styled(Flex)`
 `;
 
 const MenuItem = styled.button`
-  ${getTextCssBlock('text-sm', 'medium')}
+  ${getTextCssBlock('text-sm/medium')}
   text-align: left;
   padding: 10px 16px;
   color: ${getColor('grey-700')};
@@ -74,7 +74,7 @@ const DashboardLayout = () => {
             ))}
           </AppSidebarBody>
           <AppSidebarFooter>
-            <Text variant="text-xs" weight="regular" color="grey-600">
+            <Text font="text-xs/regular" color="grey-600">
               © MT 2024
             </Text>
           </AppSidebarFooter>

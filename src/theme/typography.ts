@@ -98,21 +98,26 @@ export const FONT_WEIGHT_MAP: Record<FontWeight, number> = {
 
 export type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
-export const getTextCssBlock = (
-  typography: Typography,
-  fontWeight: FontWeight,
-) => css`
-  font-size: ${typographyDefs[typography].fontSize};
-  line-height: ${typographyDefs[typography].lineHeight};
-  letter-spacing: ${typographyDefs[typography].letterSpacing};
-  font-weight: ${FONT_WEIGHT_MAP[fontWeight]};
-`;
+export type FontKey = `${Typography}/${FontWeight}`;
+
+export const splitFontKey = (font: FontKey) =>
+  font.split(/\/(regular|medium|semibold|bold)$/) as [Typography, FontWeight];
+
+export const getTextCssBlock = (font: FontKey) => {
+  const [typography, fontWeight] = splitFontKey(font);
+  return css`
+    font-size: ${typographyDefs[typography].fontSize};
+    line-height: ${typographyDefs[typography].lineHeight};
+    letter-spacing: ${typographyDefs[typography].letterSpacing};
+    font-weight: ${FONT_WEIGHT_MAP[fontWeight]};
+  `;
+};
 
 export const TEXT_COMPONENTS_MAP = mapValues(typographyDefs, (_, key) =>
   mapValues(
     FONT_WEIGHT_MAP,
     (_, weightKey) => styled.span`
-      ${getTextCssBlock(key as Typography, weightKey as FontWeight)}
+      ${getTextCssBlock([key, weightKey].join('/') as FontKey)}
     `,
   ),
 );

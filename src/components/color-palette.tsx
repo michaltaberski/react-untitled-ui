@@ -16,7 +16,7 @@ export const ColorPalette = (p: FlexProps) => {
             {Object.entries(colorPalette).map(([colorShade, colorValue]) => (
               <Box key={colorValue}>
                 <Swatch color={colorValue} />
-                <Text variant="textSm" weight="regular">
+                <Text font="text-sm/regular">
                   {colorName}-{colorShade}
                 </Text>
               </Box>
