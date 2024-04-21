@@ -6,16 +6,37 @@ import { getTextCssBlock } from '../theme/typography';
 import { getColor } from '../theme/color';
 import Logo from './logo';
 
-const AppSidebar = styled(Flex).attrs({ direction: 'column' })`
-  width: 312px;
+const SIDEAR_WIDTH = 312;
+
+const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column' })`
+  position: fixed;
+  height: 100vh;
+
+  width: ${SIDEAR_WIDTH}px;
   flex-shrink: 0;
   flex-grow: 0;
   border-right: 1px solid ${getColor('divider')};
-  padding: 16px;
   padding-top: 32px;
 `;
 
+const AppSidebarHeader = styled(Flex)`
+  padding: 0 16px 24px;
+  margin: 0 8px;
+`;
+
+const AppSidebarBody = styled(Flex).attrs({ direction: 'column' })`
+  overflow: auto;
+  padding: 0 16px 24px;
+  flex: 1;
+`;
+
+const AppSidebarFooter = styled(Flex)`
+  border-top: 1px solid ${getColor('divider')};
+  padding: 24px 16px 32px;
+`;
+
 const AppMain = styled(Flex)`
+  margin-left: ${SIDEAR_WIDTH}px;
   padding: 32px;
   max-width: 1280px;
 `;
@@ -34,28 +55,31 @@ const DashboardLayout = () => {
   return (
     <>
       <Flex>
-        <AppSidebar>
-          <Box mx="2">
+        <AppSidebarWrapper>
+          <AppSidebarHeader>
             <Logo />
-          </Box>
-          {/*
+          </AppSidebarHeader>
+          <AppSidebarBody>
+            {/*
           <SlotLink to="/">
             <MenuItem>Home</MenuItem>
           </SlotLink>
           */}
-          <SlotLink to="/colors">
-            <MenuItem>Colors</MenuItem>
-          </SlotLink>
-          <SlotLink to="/icons">
-            <MenuItem>Icons</MenuItem>
-          </SlotLink>
-          <SlotLink to="/links">
-            <MenuItem>Links</MenuItem>
-          </SlotLink>
-          <SlotLink to="/typographies">
-            <MenuItem>Typographies</MenuItem>
-          </SlotLink>
-        </AppSidebar>
+            <SlotLink to="/colors">
+              <MenuItem>Colors</MenuItem>
+            </SlotLink>
+            <SlotLink to="/icons">
+              <MenuItem>Icons</MenuItem>
+            </SlotLink>
+            <SlotLink to="/links">
+              <MenuItem>Links</MenuItem>
+            </SlotLink>
+            <SlotLink to="/typographies">
+              <MenuItem>Typographies</MenuItem>
+            </SlotLink>
+          </AppSidebarBody>
+          <AppSidebarFooter>fasdklj</AppSidebarFooter>
+        </AppSidebarWrapper>
         <AppMain>
           <Outlet />
         </AppMain>
