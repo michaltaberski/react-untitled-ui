@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { SlotLink } from '../components/slot-link';
 import { getTextCssBlock } from '../theme/typography';
 import { getColor } from '../theme/color';
+import { Text } from '../components/text';
 import Logo from './logo';
 
 const SIDEAR_WIDTH = 312;
@@ -78,7 +79,11 @@ const DashboardLayout = () => {
               <MenuItem>Typographies</MenuItem>
             </SlotLink>
           </AppSidebarBody>
-          <AppSidebarFooter>fasdklj</AppSidebarFooter>
+          <AppSidebarFooter>
+            <Text variant="textSm" weight="regular" color="grey-700">
+              © MT 2024
+            </Text>
+          </AppSidebarFooter>
         </AppSidebarWrapper>
         <AppMain>
           <Outlet />
