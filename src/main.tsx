@@ -1,5 +1,6 @@
 // Styles
-import 'reset-css';
+import 'modern-normalize';
+import './preflight.css';
 import '@fontsource/inter/400.css'; // regular
 import '@fontsource/inter/500.css'; // medium
 import '@fontsource/inter/600.css'; // semi-bold
