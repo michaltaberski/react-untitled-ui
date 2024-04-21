@@ -31,4 +31,6 @@ const LinksPage = () => {
   );
 };
 
+LinksPage.title = 'Links';
+
 export default LinksPage;

@@ -74,17 +74,17 @@ const textXs: TypographyDef = {
 };
 
 export const typographyDefs = {
-  display2xl,
-  displayXl,
-  displayLg,
-  displayMd,
-  displaySm,
-  displayXs,
-  textXl,
-  textLg,
-  textMd,
-  textSm,
-  textXs,
+  'display-2xl': display2xl,
+  'display-xl': displayXl,
+  'display-lg': displayLg,
+  'display-md': displayMd,
+  'display-sm': displaySm,
+  'display-xs': displayXs,
+  'text-xl': textXl,
+  'text-lg': textLg,
+  'text-md': textMd,
+  'text-sm': textSm,
+  'text-xs': textXs,
 };
 
 export type Typography = keyof typeof typographyDefs;

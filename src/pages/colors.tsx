@@ -10,4 +10,6 @@ const ColorsPage = () => {
   );
 };
 
+ColorsPage.title = 'Colors';
+
 export default ColorsPage;

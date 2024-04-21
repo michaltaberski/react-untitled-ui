@@ -1,13 +1,15 @@
 import { TypograpiesList } from '../components/typograpies-list';
 import { Page, PageTitle } from '../components/page';
 
-const TypographiesPage = () => {
+const TypographyPage = () => {
   return (
     <Page>
-      <PageTitle>Typographies</PageTitle>
+      <PageTitle>Typography</PageTitle>
       <TypograpiesList />
     </Page>
   );
 };
 
-export default TypographiesPage;
+TypographyPage.title = 'Typography';
+
+export default TypographyPage;

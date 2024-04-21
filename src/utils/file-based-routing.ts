@@ -17,14 +17,14 @@ export const loadRoutesPromise = (async () => {
   await Promise.all(
     Object.keys(PAGES).map(async path => {
       const module = (await PAGES[path]()) as {
-        default: React.ComponentType;
+        default: React.ComponentType & { title?: string };
         META?: PageMeta;
       };
       const routePath = path.replace('../pages', '').replace('.tsx', '');
       ROUTES.push({
         path: routePath,
         component: module.default,
-        title: routePath.replace('/', ''),
+        title: module.default.title || routePath.replace('/', ''),
         ...(module.META || {}),
       });
     }),

@@ -17,4 +17,6 @@ const IconsPage = () => {
   );
 };
 
+IconsPage.title = 'Icons';
+
 export default IconsPage;
