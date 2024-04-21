@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Box, Flex } from '@radix-ui/themes';
+import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from '../components/slot-link';
 import { getTextCssBlock } from '../theme/typography';
@@ -80,7 +80,7 @@ const DashboardLayout = () => {
             </SlotLink>
           </AppSidebarBody>
           <AppSidebarFooter>
-            <Text variant="textSm" weight="regular" color="grey-700">
+            <Text variant="textXs" weight="regular" color="grey-600">
               © MT 2024
             </Text>
           </AppSidebarFooter>
