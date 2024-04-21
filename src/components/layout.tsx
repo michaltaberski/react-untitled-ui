@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useIconsLoaded } from './icon';
-import { Flex } from '@radix-ui/themes';
+import { PageTitle } from './page';
 
 const Layout = () => {
   const iconsLoaded = useIconsLoaded();
@@ -8,10 +8,12 @@ const Layout = () => {
 
   return (
     <>
-      <Flex>Pages:</Flex>
+      <PageTitle>Untitled UI</PageTitle>
       <Link to="/">Home</Link>
       <Link to="/colors">Colors</Link>
       <Link to="/icons">Icons</Link>
+      <Link to="/links">Links</Link>
+      <Link to="/typographies">Typographies</Link>
       <Outlet />
     </>
   );

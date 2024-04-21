@@ -1,20 +1,9 @@
-import { ColorPalette } from '../components/color-palette';
-import { TypograpiesList } from '../components/typograpies-list';
 import { Page, PageTitle } from '../components/page';
-import { Text } from '../components/text';
-import { withDefaultProps } from '../utils/with-default-props';
 
-const Subtitle = withDefaultProps(Text, {
-  variant: 'textLg',
-  weight: 'semibold',
-  as: 'h2',
-});
-
-const AboutPage = () => {
+const LinksPage = () => {
   return (
     <Page>
-      <PageTitle>UntitledUI</PageTitle>
-      <Subtitle>Links</Subtitle>
+      <PageTitle>Links</PageTitle>
       <ul>
         <li>
           <a href="https://www.untitledui.com/" target="_blank">
@@ -38,10 +27,8 @@ const AboutPage = () => {
           </a>
         </li>
       </ul>
-      <ColorPalette />
-      <TypograpiesList />
     </Page>
   );
 };
 
-export default AboutPage;
+export default LinksPage;
