@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { loadIcons } from '../components/icon';
+import { loadIconsPromise } from '../components/icon';
+import { loadRoutesPromise } from './file-based-routing';
 
 export const useLoadApp = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    Promise.all([loadIcons()]).then(() => setIsLoaded(true));
+    Promise.all([loadIconsPromise, loadRoutesPromise]).then(() =>
+      setIsLoaded(true),
+    );
   }, []);
   return isLoaded;
 };

@@ -7,7 +7,7 @@ const ICONS_IMPORT = import.meta.glob('../assets/icons/*.svg', { as: 'raw' });
 
 export const getIconNames = () => Object.keys(ICONS) as IconName[];
 
-export const loadIcons = async () => {
+export const loadIconsPromise = (async () => {
   if (Object.keys(ICONS).length) return;
   await Promise.all(
     Object.entries(ICONS_IMPORT).map(async ([path, iconModule]) => {
@@ -16,7 +16,7 @@ export const loadIcons = async () => {
       ICONS[name as IconName] = icon;
     }),
   );
-};
+})();
 
 type IconProps = MarginProps & {
   style?: React.CSSProperties;

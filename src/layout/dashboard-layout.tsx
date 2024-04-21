@@ -6,6 +6,7 @@ import { getTextCssBlock } from '../theme/typography';
 import { getColor } from '../theme/color';
 import { Text } from '../components/text';
 import Logo from './logo';
+import { ROUTES } from '../utils/file-based-routing';
 
 const SIDEAR_WIDTH = 312;
 
@@ -66,18 +67,11 @@ const DashboardLayout = () => {
             <MenuItem>Home</MenuItem>
           </SlotLink>
           */}
-            <SlotLink to="/colors">
-              <MenuItem>Colors</MenuItem>
-            </SlotLink>
-            <SlotLink to="/icons">
-              <MenuItem>Icons</MenuItem>
-            </SlotLink>
-            <SlotLink to="/links">
-              <MenuItem>Links</MenuItem>
-            </SlotLink>
-            <SlotLink to="/typographies">
-              <MenuItem>Typographies</MenuItem>
-            </SlotLink>
+            {ROUTES.map(({ path, title }) => (
+              <SlotLink key={path} to={path}>
+                <MenuItem>{title}</MenuItem>
+              </SlotLink>
+            ))}
           </AppSidebarBody>
           <AppSidebarFooter>
             <Text variant="textXs" weight="regular" color="grey-600">

@@ -1,13 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import DashboardLayout from './layout/dashboard-layout';
 import { PageTitle } from './components/page';
-// Pages
-// import HomePage from './pages/home';
-import ColorsPage from './pages/colors';
-import IconsPage from './pages/icons';
-import LinksPage from './pages/links';
-import TypographiesPage from './pages/typographies';
 import { useLoadApp } from './utils/use-load-app';
+import { ROUTES } from './utils/file-based-routing';
+import { Fragment } from 'react/jsx-runtime';
 
 function App() {
   const isAppLoaded = useLoadApp();
@@ -17,12 +13,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<DashboardLayout />}>
-        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<Navigate to="/colors" />} />
-        <Route path="/colors" element={<ColorsPage />} />
-        <Route path="/icons" element={<IconsPage />} />
-        <Route path="/links" element={<LinksPage />} />
-        <Route path="/typographies" element={<TypographiesPage />} />
+        {/* File based routes */}
+        {ROUTES.map(({ path, component: Component = Fragment }) => (
+          <Route key={path} path={path} element={<Component />} />
+        ))}
         <Route path="*" element={<PageTitle>Not matched</PageTitle>} />
       </Route>
     </Routes>
