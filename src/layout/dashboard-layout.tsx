@@ -45,7 +45,6 @@ const AppMain = styled(Flex)`
 
 const MenuItem = styled.button`
   ${getTextCssBlock('text-sm/medium')}
-  text-align: left;
   padding: 10px 16px;
   color: ${getColor('grey-700')};
   &:hover {
@@ -62,11 +61,6 @@ const DashboardLayout = () => {
             <Logo />
           </AppSidebarHeader>
           <AppSidebarBody>
-            {/*
-          <SlotLink to="/">
-            <MenuItem>Home</MenuItem>
-          </SlotLink>
-          */}
             {ROUTES.map(({ path, title }) => (
               <SlotLink key={path} to={path}>
                 <MenuItem>{title}</MenuItem>
