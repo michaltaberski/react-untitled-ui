@@ -2,11 +2,11 @@ import { Outlet } from 'react-router-dom';
 import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from '../components/slot-link';
-import { getTextCssBlock } from '../tokens/typography';
 import { getColor } from '../tokens/color';
 import { Text } from '../components/text';
 import Logo from './logo';
 import { ROUTES } from '../utils/file-based-routing';
+import { Icon, IconName } from '../components/icon';
 
 const SIDEAR_WIDTH = 312;
 
@@ -43,14 +43,39 @@ const AppMain = styled(Flex)`
   max-width: 1280px;
 `;
 
-const MenuItem = styled.button`
-  ${getTextCssBlock('text-sm/medium')}
-  padding: 10px 16px;
-  color: ${getColor('grey-700')};
+const AppSidebarMenuItemButton = styled.button`
+  border-radius: 6px;
+  display: flex;
+  background-color: ${getColor('white')};
+  padding: 8px 12px;
   &:hover {
     background-color: ${getColor('grey-50')};
   }
+
+  svg {
+    margin-right: 12px;
+  }
 `;
+
+type AppSidebarMenuItemProps = {
+  label: string;
+  iconName?: IconName;
+};
+
+const AppSidebarMenuItem = ({
+  iconName = 'blank',
+  label,
+  ...rest
+}: AppSidebarMenuItemProps) => {
+  return (
+    <AppSidebarMenuItemButton {...rest}>
+      <Icon iconName={iconName} size={24} color="grey-500" />
+      <Text font="text-md/semibold" color="grey-700">
+        {label}
+      </Text>
+    </AppSidebarMenuItemButton>
+  );
+};
 
 const DashboardLayout = () => {
   return (
@@ -61,11 +86,13 @@ const DashboardLayout = () => {
             <Logo />
           </AppSidebarHeader>
           <AppSidebarBody>
-            {ROUTES.map(({ path, title }) => (
-              <SlotLink key={path} to={path}>
-                <MenuItem>{title}</MenuItem>
-              </SlotLink>
-            ))}
+            <Flex direction="column" gap="2">
+              {ROUTES.map(({ path, title }) => (
+                <SlotLink key={path} to={path}>
+                  <AppSidebarMenuItem label={title} iconName="arrow-right" />
+                </SlotLink>
+              ))}
+            </Flex>
           </AppSidebarBody>
           <AppSidebarFooter>
             <Text font="text-xs/regular" color="grey-600">

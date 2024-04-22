@@ -3,12 +3,12 @@ import { Page, PageTitle } from '../components/page';
 const ShadowPage = () => {
   return (
     <Page>
-      <PageTitle>Shadow</PageTitle>
+      <PageTitle>Tokens</PageTitle>
       ...
     </Page>
   );
 };
 
-ShadowPage.title = 'Shadow';
+ShadowPage.title = 'Tokens';
 
 export default ShadowPage;

@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { MarginProps } from '@radix-ui/themes/props';
 import { extractMarginProps } from '../utls';
+import { ColorKey, getColor } from '../tokens/color';
 
 const ICONS: Partial<Record<IconName, string>> = {};
 const ICONS_IMPORT = import.meta.glob('../assets/icons/*.svg', { as: 'raw' });
@@ -19,9 +20,10 @@ export const loadIconsPromise = (async () => {
 })();
 
 type IconProps = MarginProps & {
+  iconName: IconName;
+  color?: ColorKey;
   style?: React.CSSProperties;
   className?: string;
-  iconName: IconName;
   size?: number;
 };
 
@@ -34,11 +36,18 @@ const sanitizeSvg = (svg: string) =>
     .replace('</svg>', '');
 
 export const Icon = (p: IconProps) => {
-  const { iconName, size, ...props } = extractMarginProps(p);
+  const {
+    iconName,
+    color: colorKey,
+    size = 20,
+    ...props
+  } = extractMarginProps(p);
+  const color = colorKey && getColor(colorKey);
   const iconSrc = sanitizeSvg(ICONS[iconName] || '');
   return (
     <svg
       {...props}
+      style={{ ...(color ? { color } : {}), ...(props.style || {}) }}
       viewBox="0 0 24 24"
       fill="none"
       width={size}
