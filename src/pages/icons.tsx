@@ -1,7 +1,6 @@
-import { Box, Flex } from '@radix-ui/themes';
+import { Flex } from '@radix-ui/themes';
 import { Page, PageTitle } from '../components/page';
 import { Icon, getIconNames } from '../components/icon';
-import { Card } from '../components/card';
 import { Text } from '../components/text';
 
 const IconsPage = () => {
