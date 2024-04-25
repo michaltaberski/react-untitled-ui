@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@/lh';
+import { Flex, FlexProps } from '@/layout-helper';
 import {
   FONT_WEIGHT_MAP,
   FontKey,

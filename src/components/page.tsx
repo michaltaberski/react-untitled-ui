@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getTextCssBlock } from '../tokens/typography';
-import { Flex } from '@/lh';
+import { Flex } from '@/layout-helper';
 
 export const PageTitle = styled.h1`
   ${getTextCssBlock('display-sm/semibold')}

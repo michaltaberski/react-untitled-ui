@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getColor } from '../tokens/color';
 import Logo from './logo';
-import { Flex } from '@/lh';
+import { Flex } from '@/layout-helper';
 
 const AppHeaderWrapper = styled.header`
   position: sticky;

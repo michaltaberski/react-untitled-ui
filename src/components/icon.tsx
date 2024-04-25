@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { ColorKey, getColor } from '../tokens/color';
-import { extractMarginPaddingProps } from '@/lh';
+import { extractMarginPaddingProps } from '@/layout-helper';
 
 const ICONS: Partial<Record<IconName, string>> = {};
 const ICONS_IMPORT = import.meta.glob('../assets/icons/*.svg', { as: 'raw' });

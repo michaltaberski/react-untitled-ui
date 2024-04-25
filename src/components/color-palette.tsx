@@ -2,7 +2,7 @@ import { palettes } from '../tokens/color';
 import { Text } from './text';
 import { Card } from './card';
 import { capitalize } from 'lodash';
-import { Box, Flex, FlexProps } from '@/lh';
+import { Box, Flex, FlexProps } from '@/layout-helper';
 
 const Swatch = ({ color, size = 120 }: { color: string; size?: number }) => (
   <Box

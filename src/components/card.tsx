@@ -2,7 +2,7 @@ import { ReactNode, forwardRef } from 'react';
 import { ShadowKey, shadows } from '../tokens/shadows';
 import styled from 'styled-components';
 import { getColor } from '../tokens/color';
-import { Box, BoxProps } from '@/lh/box';
+import { Box, BoxProps } from '@/layout-helper/box';
 
 type CardProps = {
   children?: ReactNode;

@@ -5,7 +5,7 @@ import { getColor } from '../tokens/color';
 import { Text } from '../components/text';
 import Logo from './logo';
 import { Icon, IconName } from '../components/icon';
-import { Flex } from '@/lh';
+import { Flex } from '@/layout-helper';
 
 const SIDEAR_WIDTH = 300;
 

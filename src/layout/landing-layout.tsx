@@ -4,7 +4,7 @@ import { SlotLink } from '../components/slot-link';
 import { getTextCssBlock } from '../tokens/typography';
 import { getColor } from '../tokens/color';
 import AppHeader, { BaseLayoutContainer } from './app-header';
-import { Flex } from '@/lh';
+import { Flex } from '@/layout-helper';
 
 const MenuItem = styled.button`
   ${getTextCssBlock('text-sm/medium')}

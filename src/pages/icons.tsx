@@ -1,7 +1,7 @@
 import { Page, PageTitle } from '../components/page';
 import { Icon, getIconNames } from '../components/icon';
 import { Text } from '../components/text';
-import { Flex } from '@/lh';
+import { Flex } from '@/layout-helper';
 
 const IconsPage = () => {
   return (
