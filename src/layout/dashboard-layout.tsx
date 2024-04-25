@@ -8,7 +8,7 @@ import Logo from './logo';
 import { ROUTES } from '../utils/file-based-routing';
 import { Icon, IconName } from '../components/icon';
 
-const SIDEAR_WIDTH = 312;
+const SIDEAR_WIDTH = 230;
 
 const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column' })`
   position: fixed;
