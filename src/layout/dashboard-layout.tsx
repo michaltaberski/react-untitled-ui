@@ -4,13 +4,12 @@ import { SlotLink } from '../components/slot-link';
 import { getColor } from '../tokens/color';
 import { Text } from '../components/text';
 import Logo from './logo';
-import { ROUTES } from '../utils/file-based-routing';
 import { Icon, IconName } from '../components/icon';
 import { Flex } from '@/lh';
 
 const SIDEAR_WIDTH = 230;
 
-const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column' })`
+const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column', pt: 4 })`
   position: fixed;
   height: 100vh;
 
@@ -18,13 +17,9 @@ const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column' })`
   flex-shrink: 0;
   flex-grow: 0;
   border-right: 1px solid ${getColor('divider')};
-  padding-top: 32px;
 `;
 
-const AppSidebarHeader = styled(Flex)`
-  padding: 0 16px 24px;
-  margin: 0 8px;
-`;
+const AppSidebarHeader = styled(Flex).attrs({ px: 2, pb: 3, mx: 1 })``;
 
 const AppSidebarBody = styled(Flex).attrs({ direction: 'column' })`
   overflow: auto;
@@ -32,14 +27,12 @@ const AppSidebarBody = styled(Flex).attrs({ direction: 'column' })`
   flex: 1;
 `;
 
-const AppSidebarFooter = styled(Flex)`
+const AppSidebarFooter = styled(Flex).attrs({ p: 2 })`
   border-top: 1px solid ${getColor('divider')};
-  padding: 24px 16px 32px;
 `;
 
-const AppMain = styled(Flex)`
+const AppMain = styled(Flex).attrs({ p: 4 })`
   margin-left: ${SIDEAR_WIDTH}px;
-  padding: 32px;
   max-width: 1280px;
 `;
 
@@ -77,7 +70,17 @@ const AppSidebarMenuItem = ({
   );
 };
 
-const DashboardLayout = () => {
+export type SidebarLinkProps = {
+  to: string;
+  label: string;
+  iconName: IconName;
+};
+
+type DashboardLayoutProps = {
+  links: SidebarLinkProps[];
+};
+
+const DashboardLayout = ({ links }: DashboardLayoutProps) => {
   return (
     <>
       <Flex>
@@ -87,9 +90,9 @@ const DashboardLayout = () => {
           </AppSidebarHeader>
           <AppSidebarBody>
             <Flex direction="column" gap={2}>
-              {ROUTES.map(({ path, title }) => (
-                <SlotLink key={path} to={path}>
-                  <AppSidebarMenuItem label={title} iconName="arrow-right" />
+              {links.map(({ to, label, iconName }) => (
+                <SlotLink key={to} to={to}>
+                  <AppSidebarMenuItem label={label} iconName={iconName} />
                 </SlotLink>
               ))}
             </Flex>
