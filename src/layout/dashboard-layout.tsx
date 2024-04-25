@@ -7,7 +7,7 @@ import Logo from './logo';
 import { Icon, IconName } from '../components/icon';
 import { Flex } from '@/lh';
 
-const SIDEAR_WIDTH = 230;
+const SIDEAR_WIDTH = 300;
 
 const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column', pt: 4 })`
   position: fixed;
@@ -19,7 +19,15 @@ const AppSidebarWrapper = styled(Flex).attrs({ direction: 'column', pt: 4 })`
   border-right: 1px solid ${getColor('divider')};
 `;
 
-const AppSidebarHeader = styled(Flex).attrs({ px: 2, pb: 3, mx: 1 })``;
+const AppSidebarHeader = styled(Flex).attrs({
+  px: 2,
+  pb: 3,
+  mx: 1,
+  direction: 'column',
+  gap: 0.5,
+})`
+  position: relative;
+`;
 
 const AppSidebarBody = styled(Flex).attrs({ direction: 'column' })`
   overflow: auto;
@@ -77,16 +85,26 @@ export type SidebarLinkProps = {
 };
 
 type DashboardLayoutProps = {
+  subtitle?: string;
   links: SidebarLinkProps[];
 };
 
-const DashboardLayout = ({ links }: DashboardLayoutProps) => {
+const DashboardLayout = ({ links, subtitle }: DashboardLayoutProps) => {
   return (
     <>
       <Flex>
         <AppSidebarWrapper>
           <AppSidebarHeader>
             <Logo />
+            {subtitle && (
+              <Text
+                font="text-xs/regular"
+                color="grey-400"
+                style={{ position: 'absolute', bottom: 16, left: 62 }}
+              >
+                {subtitle}
+              </Text>
+            )}
           </AppSidebarHeader>
           <AppSidebarBody>
             <Flex direction="column" gap={2}>

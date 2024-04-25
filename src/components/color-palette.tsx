@@ -4,7 +4,7 @@ import { Card } from './card';
 import { capitalize } from 'lodash';
 import { Box, Flex, FlexProps } from '@/lh';
 
-const Swatch = ({ color, size = 90 }: { color: string; size?: number }) => (
+const Swatch = ({ color, size = 120 }: { color: string; size?: number }) => (
   <Box
     style={{ width: size, height: size * (2 / 3), backgroundColor: color }}
   />
@@ -27,12 +27,7 @@ export const ColorPalette = (p: FlexProps) => {
               >
                 <Swatch color={colorValue} />
                 <Box style={{ padding: 8 }}>
-                  <Text
-                    as="div"
-                    font="text-xs/medium"
-                    color="grey-700"
-                    style={{ maxWidth: 70 }}
-                  >
+                  <Text as="div" font="text-xs/medium" color="grey-700">
                     {colorName}-{colorShade}
                   </Text>
                   <Text as="div" font="text-xs/regular" color="grey-600">

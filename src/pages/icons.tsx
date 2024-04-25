@@ -7,11 +7,10 @@ const IconsPage = () => {
   return (
     <Page>
       <PageTitle>Icons</PageTitle>
-      <Flex wrap="wrap">
+      <Flex wrap="wrap" mt={4}>
         {getIconNames().map(iconName => (
           <Flex
             key={iconName}
-            m={1}
             direction="column"
             justify="center"
             align="center"
