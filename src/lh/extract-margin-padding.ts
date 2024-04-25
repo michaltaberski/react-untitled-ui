@@ -1,5 +1,9 @@
 import { omitBy } from 'lodash';
 import React from 'react';
+import {
+  NumericParamValue,
+  commonNumericParamValueMapper,
+} from './numeric-param';
 
 export type SupportedParamType = 'p' | 'm';
 
@@ -18,14 +22,12 @@ type ParamKey<T extends SupportedParamType> =
   | `${T}b`
   | `${T}l`;
 
-type ParamValue = number;
-
 export type ExtractMarginProps = {
-  [K in ParamKey<'m'>]?: ParamValue;
+  [K in ParamKey<'m'>]?: NumericParamValue;
 };
 
 export type ExtractPaddingProps = {
-  [K in ParamKey<'p'>]?: ParamValue;
+  [K in ParamKey<'p'>]?: NumericParamValue;
 };
 
 export const omitEmptyValues = (obj: object) => {
@@ -37,11 +39,11 @@ export const omitEmptyValues = (obj: object) => {
 
 export const propsMerge = <TParamType extends SupportedParamType>(
   props: {
-    [K in ParamKey<SupportedParamType>]?: ParamValue;
+    [K in ParamKey<SupportedParamType>]?: NumericParamValue;
   },
   paramType: TParamType,
 ): Partial<{
-  [K in CssParamKey<TParamType>]: ParamValue;
+  [K in CssParamKey<TParamType>]: NumericParamValue;
 }> => {
   return omitEmptyValues({
     [`${paramType}t`]:
@@ -57,9 +59,9 @@ export const propsMerge = <TParamType extends SupportedParamType>(
 
 const mapToCss = <TParamType extends SupportedParamType>(
   input: Partial<{
-    [K in CssParamKey<TParamType>]: ParamValue;
+    [K in CssParamKey<TParamType>]: NumericParamValue;
   }>,
-  mapFn: (paramValue: ParamValue) => string | number = x => x,
+  mapFn: (paramValue: NumericParamValue) => string | number = x => x,
 ) => {
   const MAP = {
     mt: 'marginTop',
@@ -74,14 +76,14 @@ const mapToCss = <TParamType extends SupportedParamType>(
   return Object.fromEntries(
     Object.entries(input).map(([key, value]) => [
       MAP[key as keyof typeof MAP],
-      mapFn(value as ParamValue),
+      mapFn(value as NumericParamValue),
     ]),
   );
 };
 
 export const mapPropsToStyle = <T extends object>(
   props: T,
-  mapFn?: (paramValue: ParamValue) => string | number,
+  mapFn?: (paramValue: NumericParamValue) => string | number,
 ) => {
   const marginProps = mapToCss(propsMerge(props, 'm'), mapFn);
   const paddingProps = mapToCss(propsMerge(props, 'p'), mapFn);
@@ -96,10 +98,7 @@ export const extractMarginPaddingProps = <
   props: T,
 ) => {
   const style = props.style ?? {};
-  const extractedStyle = mapPropsToStyle(
-    props,
-    (value: ParamValue) => 8 * value + 'px',
-  );
+  const extractedStyle = mapPropsToStyle(props, commonNumericParamValueMapper);
 
   return {
     ...props,

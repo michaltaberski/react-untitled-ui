@@ -4,14 +4,16 @@ import {
   ExtractPaddingProps,
   extractMarginPaddingProps,
 } from './extract-margin-padding';
+import { ExtractFlexProps, extractFlexProps } from './extract-flex';
 
 export type FlexProps = React.HTMLAttributes<HTMLDivElement> &
   ExtractMarginProps &
-  ExtractPaddingProps;
+  ExtractPaddingProps &
+  ExtractFlexProps;
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>(
   ({ children, ...props }, ref) => {
-    const extractedProps = extractMarginPaddingProps(props);
+    const extractedProps = extractFlexProps(extractMarginPaddingProps(props));
     return (
       <div ref={ref} {...extractedProps}>
         {children}
