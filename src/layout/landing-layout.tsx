@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from '../components/slot-link';
 import { getTextCssBlock } from '../tokens/typography';
 import { getColor } from '../tokens/color';
 import AppHeader, { BaseLayoutContainer } from './app-header';
+import { Flex } from '@/lh';
 
 const MenuItem = styled.button`
   ${getTextCssBlock('text-sm/medium')}
@@ -21,7 +21,7 @@ const LandingLayout = () => {
     <>
       <AppHeader />
       <BaseLayoutContainer
-        gap="20px"
+        gap={20}
         style={{ paddingTop: 20, paddingBottom: 20 }}
       >
         <Flex direction="column" style={{ width: 225 }}>

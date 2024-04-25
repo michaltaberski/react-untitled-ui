@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-import { Flex } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { SlotLink } from '../components/slot-link';
 import { getColor } from '../tokens/color';
@@ -7,6 +6,7 @@ import { Text } from '../components/text';
 import Logo from './logo';
 import { ROUTES } from '../utils/file-based-routing';
 import { Icon, IconName } from '../components/icon';
+import { Flex } from '@/lh';
 
 const SIDEAR_WIDTH = 230;
 
@@ -86,7 +86,7 @@ const DashboardLayout = () => {
             <Logo />
           </AppSidebarHeader>
           <AppSidebarBody>
-            <Flex direction="column" gap="2">
+            <Flex direction="column" gap={2}>
               {ROUTES.map(({ path, title }) => (
                 <SlotLink key={path} to={path}>
                   <AppSidebarMenuItem label={title} iconName="arrow-right" />

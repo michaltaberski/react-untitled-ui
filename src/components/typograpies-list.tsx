@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@radix-ui/themes';
+import { Flex, FlexProps } from '@/lh';
 import {
   FONT_WEIGHT_MAP,
   FontKey,
@@ -13,11 +13,11 @@ const weights = Object.keys(FONT_WEIGHT_MAP) as FontWeight[];
 
 export const TypograpiesList = (p: FlexProps) => {
   return (
-    <Flex direction="column" gap="8" {...p}>
+    <Flex direction="column" gap={8} {...p}>
       {typographies.map(typography => (
         <Flex key={typography} direction="column">
           <h1>{typography}</h1>
-          <Flex gap="8" direction="column">
+          <Flex gap={8} direction="column">
             {weights.map(weight => (
               <Text
                 key={weight}

@@ -1,8 +1,8 @@
-import { Box, Flex, FlexProps } from '@radix-ui/themes';
 import { palettes } from '../tokens/color';
 import { Text } from './text';
 import { Card } from './card';
 import { capitalize } from 'lodash';
+import { Box, Flex, FlexProps } from '@/lh';
 
 const Swatch = ({ color, size = 90 }: { color: string; size?: number }) => (
   <Box
@@ -12,13 +12,13 @@ const Swatch = ({ color, size = 90 }: { color: string; size?: number }) => (
 
 export const ColorPalette = (p: FlexProps) => {
   return (
-    <Flex direction="column" gap="6" {...p}>
+    <Flex direction="column" gap={4} mt={4} {...p}>
       {Object.entries(palettes).map(([colorName, colorPalette]) => (
-        <Flex key={colorName} direction="column">
-          <Text as="h1" font="text-lg/semibold" style={{ marginBottom: 8 }}>
+        <Flex key={colorName} direction="column" gap={2}>
+          <Text as="h1" font="text-lg/semibold">
             {capitalize(colorName)}
           </Text>
-          <Flex gap="3" wrap="wrap">
+          <Flex gap={3} wrap="wrap">
             {Object.entries(colorPalette).map(([colorShade, colorValue]) => (
               <Card
                 key={colorValue}

@@ -25,12 +25,15 @@ const mapPropsToStyle = <T extends object>(input: T) => {
     gap: 'gap',
   };
 
-  return Object.fromEntries(
-    Object.entries(input).map(([key, value]) => [
-      MAP[key as keyof typeof MAP],
-      key === 'gap' ? commonNumericParamValueMapper(value) : value,
-    ]),
-  );
+  return {
+    display: 'flex',
+    ...Object.fromEntries(
+      Object.entries(input).map(([key, value]) => [
+        MAP[key as keyof typeof MAP],
+        key === 'gap' ? commonNumericParamValueMapper(value) : value,
+      ]),
+    ),
+  };
 };
 
 export const extractFlexProps = <

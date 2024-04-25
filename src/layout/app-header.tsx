@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getColor } from '../tokens/color';
 import Logo from './logo';
-import { Flex } from '@radix-ui/themes';
+import { Flex } from '@/lh';
 
 const AppHeaderWrapper = styled.header`
   position: sticky;
