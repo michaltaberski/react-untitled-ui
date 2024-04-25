@@ -5,11 +5,11 @@ import {
   extractMarginPaddingProps,
 } from './extract-margin-padding';
 
-export type BoxProps = React.HTMLAttributes<HTMLDivElement> &
+export type FlexProps = React.HTMLAttributes<HTMLDivElement> &
   ExtractMarginProps &
   ExtractPaddingProps;
 
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(
   ({ children, ...props }, ref) => {
     const extractedProps = extractMarginPaddingProps(props);
     return (

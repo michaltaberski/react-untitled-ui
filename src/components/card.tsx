@@ -1,8 +1,8 @@
 import { ReactNode, forwardRef } from 'react';
 import { ShadowKey, shadows } from '../tokens/shadows';
-import { Box, BoxProps } from '@radix-ui/themes';
 import styled from 'styled-components';
 import { getColor } from '../tokens/color';
+import { Box, BoxProps } from '@/lh/box';
 
 type CardProps = {
   children?: ReactNode;
