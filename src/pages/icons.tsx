@@ -1,6 +1,8 @@
 import { Box, Flex } from '@radix-ui/themes';
 import { Page, PageTitle } from '../components/page';
 import { Icon, getIconNames } from '../components/icon';
+import { Card } from '../components/card';
+import { Text } from '../components/text';
 
 const IconsPage = () => {
   return (
@@ -8,9 +10,24 @@ const IconsPage = () => {
       <PageTitle>Icons</PageTitle>
       <Flex wrap="wrap">
         {getIconNames().map(iconName => (
-          <Box key={iconName} m="1">
+          <Flex
+            key={iconName}
+            m="1"
+            width="120px"
+            height="80px"
+            direction="column"
+            justify="center"
+            align="center"
+          >
             <Icon iconName={iconName} size={24} />
-          </Box>
+            <Text
+              font="text-xs/regular"
+              color="grey-500"
+              style={{ marginTop: 8 }}
+            >
+              {iconName}
+            </Text>
+          </Flex>
         ))}
       </Flex>
     </Page>
