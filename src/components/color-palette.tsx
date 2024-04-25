@@ -18,7 +18,7 @@ export const ColorPalette = (p: FlexProps) => {
           <Text as="h1" font="text-lg/semibold">
             {capitalize(colorName)}
           </Text>
-          <Flex gap={3} wrap="wrap">
+          <Flex gap={2} wrap="wrap">
             {Object.entries(colorPalette).map(([colorShade, colorValue]) => (
               <Card
                 key={colorValue}
