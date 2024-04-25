@@ -21,9 +21,10 @@ const PageLoader = ({
 };
 
 const SIDEBAR_LINKS: SidebarLinkProps[] = [
-  { label: 'Colors', to: '/colors', iconName: 'droplet' },
-  { label: 'Icons', to: '/icons', iconName: 'mouse-pointer' },
-  { label: 'Links', to: '/links', iconName: 'link' },
+  { label: 'Colors', to: '/colors' },
+  { label: 'Icons', to: '/icons' },
+  { label: 'Button', to: '/button' },
+  { label: 'Links', to: '/links' },
 ];
 
 function App() {

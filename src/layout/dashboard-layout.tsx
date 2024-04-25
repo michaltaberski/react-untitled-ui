@@ -64,14 +64,14 @@ type AppSidebarMenuItemProps = {
 };
 
 const AppSidebarMenuItem = ({
-  iconName = 'blank',
+  iconName,
   label,
   ...rest
 }: AppSidebarMenuItemProps) => {
   return (
     <AppSidebarMenuItemButton {...rest}>
-      <Icon iconName={iconName} size={24} color="grey-500" />
-      <Text font="text-md/semibold" color="grey-700">
+      {iconName && <Icon iconName={iconName} size={24} color="grey-500" />}
+      <Text font="text-sm/medium" color="grey-700">
         {label}
       </Text>
     </AppSidebarMenuItemButton>
@@ -81,7 +81,7 @@ const AppSidebarMenuItem = ({
 export type SidebarLinkProps = {
   to: string;
   label: string;
-  iconName: IconName;
+  iconName?: IconName;
 };
 
 type DashboardLayoutProps = {
@@ -107,7 +107,7 @@ const DashboardLayout = ({ links, subtitle }: DashboardLayoutProps) => {
             )}
           </AppSidebarHeader>
           <AppSidebarBody>
-            <Flex direction="column" gap={2}>
+            <Flex direction="column" gap={0.5}>
               {links.map(({ to, label, iconName }) => (
                 <SlotLink key={to} to={to}>
                   <AppSidebarMenuItem label={label} iconName={iconName} />
