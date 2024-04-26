@@ -8,7 +8,11 @@ export type ButtonType =
   | 'primary'
   | 'secondary'
   | 'secondary-grey'
-  | 'tertiary';
+  | 'tertiary'
+  | 'tertiary-grey'
+  | 'destructive-primary'
+  | 'destructive-secondary'
+  | 'destructive-tertiary';
 
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
@@ -65,10 +69,80 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
   `,
   'secondary-grey': css`
     color: ${getColor('grey-700')};
+    background-color: ${getColor('white')};
     border: 1px solid;
     border-color: ${getColor('grey-300')};
+    &:hover {
+      background-color: ${getColor('grey-50')};
+    }
+    &:active {
+      background-color: ${getColor('white')};
+    }
+    &:disabled {
+      color: ${getColor('grey-300')};
+      background-color: ${getColor('white')};
+      border-color: ${getColor('grey-200')};
+    }
   `,
-  tertiary: css``,
+  tertiary: css`
+    color: ${getColor('brand-700')};
+    &:hover {
+      background-color: ${getColor('brand-50')};
+    }
+    &:active {
+      background-color: ${getColor('white')};
+    }
+    &:disabled {
+      color: ${getColor('grey-300')};
+      background-color: ${getColor('white')};
+    }
+  `,
+  'tertiary-grey': css`
+    color: ${getColor('grey-600')};
+  `,
+  'destructive-primary': css`
+    color: ${getColor('white')};
+    background-color: ${getColor('error-600')};
+    &:hover {
+      background-color: ${getColor('error-700')};
+    }
+    &:active {
+      background-color: ${getColor('error-600')};
+    }
+    &:disabled {
+      background-color: ${getColor('error-200')};
+    }
+  `,
+  'destructive-secondary': css`
+    color: ${getColor('error-700')};
+    background-color: ${getColor('error-50')};
+    &:hover {
+      background-color: ${getColor('error-100')};
+    }
+    &:active {
+      background-color: ${getColor('error-50')};
+    }
+    &:disabled {
+      color: ${getColor('error-300')};
+      background-color: ${getColor('error-25')};
+    }
+  `,
+  'destructive-tertiary': css`
+    color: ${getColor('error-700')};
+    border: 1px solid;
+    border-color: ${getColor('error-300')};
+    background-color: ${getColor('white')};
+    &:hover {
+      background-color: ${getColor('error-50')};
+    }
+    &:active {
+      background-color: ${getColor('white')};
+    }
+    &:disabled {
+      color: ${getColor('error-300')};
+      background-color: ${getColor('white')};
+    }
+  `,
 };
 
 const ButtonBase = styled.button<{

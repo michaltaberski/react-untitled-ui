@@ -8,7 +8,15 @@ const ButtonPage = () => {
       <PageTitle>Button</PageTitle>
       <Flex direction="column" gap={4}>
         {(
-          ['primary', 'secondary', 'secondary-grey', 'tertiary'] as ButtonType[]
+          [
+            'primary',
+            'secondary',
+            'secondary-grey',
+            'tertiary',
+            'destructive-primary',
+            'destructive-secondary',
+            'destructive-tertiary',
+          ] as ButtonType[]
         ).map(buttonType => (
           <Flex gap={3} align="center">
             <Button buttonSize="sm" buttonType={buttonType} isDisabled>
@@ -16,7 +24,7 @@ const ButtonPage = () => {
             </Button>
             {(['sm', 'md', 'lg', 'xl', '2xl'] as ButtonSize[]).map(size => (
               <Button key={size} buttonSize={size} buttonType={buttonType}>
-                Button {size}
+                Button CTA
               </Button>
             ))}
           </Flex>
