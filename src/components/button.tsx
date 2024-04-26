@@ -1,0 +1,113 @@
+import React, { forwardRef } from 'react';
+import { ExtractMarginProps, extractMarginPaddingProps } from '@/layout-helper';
+import styled, { RuleSet, css } from 'styled-components';
+import { getTextCssBlock } from '@/tokens/typography';
+import { getColor } from '@/tokens/color';
+
+export type ButtonType =
+  | 'primary'
+  | 'secondary'
+  | 'secondary-grey'
+  | 'tertiary';
+
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
+  sm: css`
+    ${getTextCssBlock('text-sm/semibold')}
+    padding: 8px 14px;
+  `,
+  md: css`
+    ${getTextCssBlock('text-sm/semibold')}
+    padding: 10px 16px;
+  `,
+  lg: css`
+    ${getTextCssBlock('text-md/semibold')}
+    padding: 10px 18px;
+  `,
+  xl: css`
+    ${getTextCssBlock('text-md/semibold')}
+    padding: 12px 20px;
+  `,
+  '2xl': css`
+    ${getTextCssBlock('text-lg/semibold')}
+    padding: 16px 28px;
+  `,
+};
+
+const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
+  primary: css`
+    background-color: ${getColor('brand-600')};
+    color: white;
+    &:hover {
+      background-color: ${getColor('brand-700')};
+    }
+    &:active {
+      background-color: ${getColor('brand-600')};
+    }
+    &:disabled {
+      background-color: ${getColor('brand-200')};
+    }
+  `,
+  secondary: css`
+    color: ${getColor('brand-700')};
+    background-color: ${getColor('brand-50')};
+    &:hover {
+      background-color: ${getColor('brand-100')};
+    }
+    &:active {
+      background-color: ${getColor('brand-50')};
+    }
+    &:disabled {
+      color: ${getColor('brand-300')};
+      background-color: ${getColor('brand-25')};
+    }
+  `,
+  'secondary-grey': css`
+    color: ${getColor('grey-700')};
+    border: 1px solid;
+    border-color: ${getColor('grey-300')};
+  `,
+  tertiary: css``,
+};
+
+const ButtonBase = styled.button<{
+  $buttonType: ButtonType;
+  $buttonSize: ButtonSize;
+}>`
+  border-radius: 8px;
+  ${({ $buttonSize }) => PER_BUTTON_SIZE[$buttonSize]}
+  ${({ $buttonType }) => PER_BUTTON_TYPE[$buttonType]}
+`;
+
+export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+  isDisabled?: boolean;
+  buttonSize?: ButtonSize;
+  buttonType?: ButtonType;
+} & ExtractMarginProps;
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      buttonSize = 'md',
+      buttonType = 'primary',
+      isDisabled,
+      ...props
+    },
+    ref,
+  ) => {
+    const extractedProps = extractMarginPaddingProps(props);
+    return (
+      <ButtonBase
+        ref={ref}
+        disabled={isDisabled}
+        $buttonSize={buttonSize}
+        $buttonType={buttonType}
+        {...extractedProps}
+      >
+        {children}
+      </ButtonBase>
+    );
+  },
+);
