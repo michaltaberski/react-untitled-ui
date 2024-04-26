@@ -18,7 +18,7 @@ const ButtonPage = () => {
             'destructive-tertiary',
           ] as ButtonType[]
         ).map(buttonType => (
-          <Flex gap={3} align="center">
+          <Flex key={buttonType} gap={3} align="flex-start">
             <Button buttonSize="sm" buttonType={buttonType} isDisabled>
               Button disabled
             </Button>
