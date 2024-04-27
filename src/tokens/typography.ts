@@ -90,10 +90,10 @@ export const typographyDefs = {
 export type Typography = keyof typeof typographyDefs;
 
 export const FONT_WEIGHT_MAP: Record<FontWeight, number> = {
-  regular: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
+  regular: 300,
+  medium: 400,
+  semibold: 500,
+  bold: 600,
 };
 
 export type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';

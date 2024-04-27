@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { ExtractMarginProps, extractMarginPaddingProps } from '@/layout-helper';
 import styled, { RuleSet, css } from 'styled-components';
 import { getTextCssBlock } from '@/tokens/typography';
-import { getColor } from '@/tokens/color';
+import { ColorKey, getColor } from '@/tokens/color';
 
 export type ButtonType =
   | 'primary'
@@ -39,15 +39,23 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
   `,
 };
 
+const getOutlineCss = (color: ColorKey) => css`
+  outline-width: 4px;
+  outline-style: solid;
+  outline-color: ${getColor(color)};
+`;
+
 const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
   primary: css`
     background-color: ${getColor('brand-600')};
     color: white;
+
     &:hover {
       background-color: ${getColor('brand-700')};
     }
     &:active {
       background-color: ${getColor('brand-600')};
+      ${getOutlineCss('brand-100')}
     }
     &:disabled {
       background-color: ${getColor('brand-200')};
@@ -61,6 +69,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
     }
     &:active {
       background-color: ${getColor('brand-50')};
+      ${getOutlineCss('brand-100')}
     }
     &:disabled {
       color: ${getColor('brand-300')};
@@ -77,6 +86,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
     }
     &:active {
       background-color: ${getColor('white')};
+      ${getOutlineCss('grey-100')}
     }
     &:disabled {
       color: ${getColor('grey-300')};
@@ -108,6 +118,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
     }
     &:active {
       background-color: ${getColor('error-600')};
+      ${getOutlineCss('error-100')}
     }
     &:disabled {
       background-color: ${getColor('error-200')};
@@ -121,6 +132,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
     }
     &:active {
       background-color: ${getColor('error-50')};
+      ${getOutlineCss('error-100')}
     }
     &:disabled {
       color: ${getColor('error-300')};
@@ -137,6 +149,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
     }
     &:active {
       background-color: ${getColor('white')};
+      ${getOutlineCss('error-100')}
     }
     &:disabled {
       color: ${getColor('error-300')};
@@ -150,6 +163,11 @@ const ButtonBase = styled.button<{
   $buttonSize: ButtonSize;
 }>`
   border-radius: 8px;
+
+  outline-width: 0;
+  transition: outline-width 0.15s;
+  transition: background-color 0.15s;
+
   ${({ $buttonSize }) => PER_BUTTON_SIZE[$buttonSize]}
   ${({ $buttonType }) => PER_BUTTON_TYPE[$buttonType]}
 `;
