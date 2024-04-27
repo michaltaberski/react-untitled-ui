@@ -165,10 +165,12 @@ const ButtonBase = styled.button<{
   border-radius: 8px;
 
   outline-width: 0;
+  outline-color: transparent;
   transition-timing-function: ease-in;
   transition:
-    outline-width 0.1s,
-    background-color 0.1s;
+    // outline-color 0.15s,
+    outline-width 0.15s,
+    background-color 0.15s;
 
   &:disabled {
     pointer-events: none;
