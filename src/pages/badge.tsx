@@ -34,6 +34,8 @@ const BadgePage = () => {
                 label={`Label ${size.toUpperCase()}`}
               />
             ))}
+            <Badge color={color} label={`Label ${color}`} iconName="user" />
+            <Badge color={color} label={`Label ${color}`} endIconName="x" />
           </Flex>
         ))}
       </Flex>

@@ -1,6 +1,7 @@
 import { ColorKey, getColor, PaletteKey } from '@/tokens/color';
 import { FontKey, getTextCssBlock } from '@/tokens/typography';
 import styled, { css } from 'styled-components';
+import { Icon, IconName } from './icon';
 
 type BadgeColor = PaletteKey;
 type BadgeSize = 'sm' | 'md' | 'lg';
@@ -71,23 +72,29 @@ const BADGE_SIZE: Record<
   {
     fontKey: FontKey;
     padding: string;
+    gap?: string;
   }
 > = {
   sm: {
     fontKey: 'text-xs/medium',
     padding: '2px 8px',
+    gap: '4px',
   },
   md: {
     fontKey: 'text-sm/medium',
     padding: '2px 10px',
+    gap: '4px',
   },
   lg: {
     fontKey: 'text-sm/medium',
     padding: '4px 12px',
+    gap: '4px',
   },
 };
 
 const BadgeWrapper = styled.div<{ $color: PaletteKey; $size: BadgeSize }>`
+  display: inline-flex;
+  align-items: center;
   border-radius: 999px;
   ${({ $color }) => css`
     color: ${getColor(COLORS[$color].textColor)};
@@ -95,6 +102,7 @@ const BadgeWrapper = styled.div<{ $color: PaletteKey; $size: BadgeSize }>`
   `}
   ${({ $size }) => css`
     padding: ${BADGE_SIZE[$size].padding};
+    gap: ${BADGE_SIZE[$size].gap};
     ${getTextCssBlock(BADGE_SIZE[$size].fontKey)}
   `}
 `;
@@ -103,12 +111,22 @@ export type BadgeProps = {
   color: BadgeColor;
   size?: BadgeSize;
   label: string;
+  iconName?: IconName;
+  endIconName?: IconName;
 };
 
-export const Badge = ({ color, label, size = 'sm' }: BadgeProps) => {
+export const Badge = ({
+  color,
+  label,
+  iconName,
+  endIconName,
+  size = 'sm',
+}: BadgeProps) => {
   return (
     <BadgeWrapper $color={color} $size={size}>
+      {iconName && <Icon iconName={iconName} size={12} />}
       {label}
+      {endIconName && <Icon iconName={endIconName} size={12} />}
     </BadgeWrapper>
   );
 };
