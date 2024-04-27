@@ -203,7 +203,7 @@ export const commonColors = {
   black: '#000000',
 } as const;
 
-type PaletteKey = keyof typeof palettes;
+export type PaletteKey = keyof typeof palettes;
 
 type ShadeKey = keyof typeof grey;
 

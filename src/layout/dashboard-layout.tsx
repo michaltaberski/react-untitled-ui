@@ -42,6 +42,7 @@ const AppSidebarFooter = styled(Flex).attrs({ p: 2 })`
 const AppMain = styled(Flex).attrs({ p: 4 })`
   margin-left: ${SIDEAR_WIDTH}px;
   max-width: 1280px;
+  width: 100%;
 `;
 
 const AppSidebarMenuItemButton = styled.button`

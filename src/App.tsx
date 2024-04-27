@@ -22,8 +22,9 @@ const PageLoader = ({
 
 const SIDEBAR_LINKS: SidebarLinkProps[] = [
   { label: 'Colors', to: '/colors' },
-  { label: 'Icons', to: '/icons' },
   { label: 'Button', to: '/button' },
+  { label: 'Badge', to: '/badge' },
+  { label: 'Icons', to: '/icons' },
   { label: 'Links', to: '/links' },
 ];
 

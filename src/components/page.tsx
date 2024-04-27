@@ -8,4 +8,6 @@ export const PageTitle = styled.h1`
 
 export const Page = styled(Flex).attrs(() => ({
   direction: 'column',
-}))``;
+}))`
+  width: 100%;
+`;
