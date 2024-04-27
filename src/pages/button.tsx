@@ -61,6 +61,74 @@ const ButtonPage = () => {
             </Flex>
           ))}
         </Flex>
+        <Flex direction="column" gap={4}>
+          {(
+            [
+              'primary',
+              'secondary',
+              'secondary-grey',
+              'tertiary',
+              'destructive-primary',
+              'destructive-secondary',
+              'destructive-tertiary',
+            ] as ButtonType[]
+          ).map(buttonType => (
+            <Flex key={buttonType} gap={3} align="flex-start">
+              <Button
+                buttonSize="sm"
+                buttonType={buttonType}
+                iconName="activity"
+                isDisabled
+              >
+                Button CTA
+              </Button>
+              {(['sm', 'md', 'lg', 'xl', '2xl'] as ButtonSize[]).map(size => (
+                <Button
+                  key={size}
+                  buttonSize={size}
+                  buttonType={buttonType}
+                  iconName="activity"
+                >
+                  Button CTA
+                </Button>
+              ))}
+            </Flex>
+          ))}
+        </Flex>
+        <Flex direction="column" gap={4}>
+          {(
+            [
+              'primary',
+              'secondary',
+              'secondary-grey',
+              'tertiary',
+              'destructive-primary',
+              'destructive-secondary',
+              'destructive-tertiary',
+            ] as ButtonType[]
+          ).map(buttonType => (
+            <Flex key={buttonType} gap={3} align="flex-start">
+              <Button
+                buttonSize="sm"
+                buttonType={buttonType}
+                endIconName="activity"
+                isDisabled
+              >
+                Button CTA
+              </Button>
+              {(['sm', 'md', 'lg', 'xl', '2xl'] as ButtonSize[]).map(size => (
+                <Button
+                  key={size}
+                  buttonSize={size}
+                  buttonType={buttonType}
+                  endIconName="activity"
+                >
+                  Button CTA
+                </Button>
+              ))}
+            </Flex>
+          ))}
+        </Flex>
       </Flex>
     </Page>
   );

@@ -33,6 +33,9 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
+    & > svg:first-child:has(+ span) {
+      margin-right: 4px;
+    }
   `,
   md: css`
     ${getTextCssBlock('text-sm/semibold')}
@@ -40,6 +43,9 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     line-height: ${BUTTON_SIZE_TO_ICON_SIZE.md}px;
     & > span {
       padding: 0 4px;
+    }
+    & > svg:first-child:has(+ span) {
+      margin-right: 4px;
     }
   `,
   lg: css`
@@ -49,6 +55,9 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
+    & > svg:first-child:has(+ span) {
+      margin-right: 4px;
+    }
   `,
   xl: css`
     ${getTextCssBlock('text-md/semibold')}
@@ -57,6 +66,9 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
+    & > svg:first-child:has(+ span) {
+      margin-right: 4px;
+    }
   `,
   '2xl': css`
     ${getTextCssBlock('text-lg/semibold')}
@@ -64,6 +76,9 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     padding: 16px;
     & > span {
       padding: 0 14px;
+    }
+    & > svg:first-child:has(+ span) {
+      margin-left: 14px;
     }
   `,
 };
@@ -192,6 +207,7 @@ const ButtonBase = styled.button<{
   $buttonSize: ButtonSize;
 }>`
   border-radius: 8px;
+  display: inline-flex;
 
   outline-width: 0;
   outline-color: transparent;
@@ -214,6 +230,7 @@ export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   buttonSize?: ButtonSize;
   buttonType?: ButtonType;
   iconName?: IconName;
+  endIconName?: IconName;
 } & ExtractMarginProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -221,6 +238,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       children,
       iconName,
+      endIconName,
       buttonSize = 'md',
       buttonType = 'primary',
       isDisabled,
@@ -244,6 +262,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           />
         )}
         {children && <span>{children}</span>}
+        {endIconName && (
+          <Icon
+            iconName={endIconName}
+            size={BUTTON_SIZE_TO_ICON_SIZE[buttonSize]}
+          />
+        )}
       </ButtonBase>
     );
   },
