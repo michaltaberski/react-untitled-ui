@@ -33,8 +33,11 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
-    & > svg:first-child:has(+ span) {
+    & > svg:first-child:not(:only-child) {
       margin-right: 4px;
+    }
+    & > svg:last-child:not(:only-child) {
+      margin-left: 4px;
     }
   `,
   md: css`
@@ -44,8 +47,11 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
-    & > svg:first-child:has(+ span) {
+    & > svg:first-child:not(:only-child) {
       margin-right: 4px;
+    }
+    & > svg:last-child:not(:only-child) {
+      margin-left: 4px;
     }
   `,
   lg: css`
@@ -55,8 +61,11 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
-    & > svg:first-child:has(+ span) {
+    & > svg:first-child:not(:only-child) {
       margin-right: 4px;
+    }
+    & > svg:last-child:not(:only-child) {
+      margin-left: 4px;
     }
   `,
   xl: css`
@@ -66,8 +75,11 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 4px;
     }
-    & > svg:first-child:has(+ span) {
+    & > svg:first-child:not(:only-child) {
       margin-right: 4px;
+    }
+    & > svg:last-child:not(:only-child) {
+      margin-left: 4px;
     }
   `,
   '2xl': css`
@@ -77,8 +89,11 @@ const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
     & > span {
       padding: 0 14px;
     }
-    & > svg:first-child:has(+ span) {
+    & > svg:first-child:not(:only-child) {
       margin-left: 14px;
+    }
+    & > svg:last-child:not(:only-child) {
+      margin-right: 14px;
     }
   `,
 };
