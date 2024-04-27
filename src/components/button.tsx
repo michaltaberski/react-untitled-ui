@@ -138,8 +138,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
   'secondary-grey': css`
     color: ${getColor('grey-700')};
     background-color: ${getColor('white')};
-    border: 1px solid;
-    border-color: ${getColor('grey-300')};
+    box-shadow: inset 0 0 0 1px ${getColor('grey-300')};
     &:hover {
       background-color: ${getColor('grey-50')};
     }
@@ -150,7 +149,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
     &:disabled {
       color: ${getColor('grey-300')};
       background-color: ${getColor('white')};
-      border-color: ${getColor('grey-200')};
+      box-shadow: inset 0 0 0 1px ${getColor('grey-200')};
     }
   `,
   tertiary: css`
@@ -200,8 +199,7 @@ const PER_BUTTON_TYPE: Record<ButtonType, RuleSet> = {
   `,
   'destructive-tertiary': css`
     color: ${getColor('error-700')};
-    border: 1px solid;
-    border-color: ${getColor('error-300')};
+    box-shadow: inset 0 0 0 1px ${getColor('error-300')};
     background-color: ${getColor('white')};
     &:hover {
       background-color: ${getColor('error-50')};
