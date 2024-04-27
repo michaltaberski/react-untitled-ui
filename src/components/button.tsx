@@ -3,6 +3,7 @@ import { ExtractMarginProps, extractMarginPaddingProps } from '@/layout-helper';
 import styled, { RuleSet, css } from 'styled-components';
 import { getTextCssBlock } from '@/tokens/typography';
 import { ColorKey, getColor } from '@/tokens/color';
+import { Icon, IconName } from './icon';
 
 export type ButtonType =
   | 'primary'
@@ -16,26 +17,54 @@ export type ButtonType =
 
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
+const BUTTON_SIZE_TO_ICON_SIZE: Record<ButtonSize, number> = {
+  sm: 16,
+  md: 16,
+  lg: 16,
+  xl: 20,
+  '2xl': 24,
+};
+
 const PER_BUTTON_SIZE: Record<ButtonSize, RuleSet> = {
   sm: css`
     ${getTextCssBlock('text-sm/semibold')}
-    padding: 8px 14px;
+    padding: 10px;
+    line-height: ${BUTTON_SIZE_TO_ICON_SIZE.sm}px;
+    & > span {
+      padding: 0 4px;
+    }
   `,
   md: css`
     ${getTextCssBlock('text-sm/semibold')}
-    padding: 10px 16px;
+    padding: 12px;
+    line-height: ${BUTTON_SIZE_TO_ICON_SIZE.md}px;
+    & > span {
+      padding: 0 4px;
+    }
   `,
   lg: css`
     ${getTextCssBlock('text-md/semibold')}
-    padding: 10px 18px;
+    line-height: ${BUTTON_SIZE_TO_ICON_SIZE.lg}px;
+    padding: 14px;
+    & > span {
+      padding: 0 4px;
+    }
   `,
   xl: css`
     ${getTextCssBlock('text-md/semibold')}
-    padding: 12px 20px;
+    line-height: ${BUTTON_SIZE_TO_ICON_SIZE.xl}px;
+    padding: 14px;
+    & > span {
+      padding: 0 4px;
+    }
   `,
   '2xl': css`
     ${getTextCssBlock('text-lg/semibold')}
-    padding: 16px 28px;
+    line-height: ${BUTTON_SIZE_TO_ICON_SIZE['2xl']}px;
+    padding: 16px;
+    & > span {
+      padding: 0 14px;
+    }
   `,
 };
 
@@ -184,12 +213,14 @@ export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   isDisabled?: boolean;
   buttonSize?: ButtonSize;
   buttonType?: ButtonType;
+  iconName?: IconName;
 } & ExtractMarginProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
+      iconName,
       buttonSize = 'md',
       buttonType = 'primary',
       isDisabled,
@@ -206,7 +237,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         $buttonType={buttonType}
         {...extractedProps}
       >
-        {children}
+        {iconName && (
+          <Icon
+            iconName={iconName}
+            size={BUTTON_SIZE_TO_ICON_SIZE[buttonSize]}
+          />
+        )}
+        {children && <span>{children}</span>}
       </ButtonBase>
     );
   },
