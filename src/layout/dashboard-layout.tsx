@@ -71,7 +71,7 @@ const AppSidebarMenuItem = ({
   return (
     <AppSidebarMenuItemButton {...rest}>
       {iconName && <Icon iconName={iconName} size={24} color="grey-500" />}
-      <Text font="text-sm/medium" color="grey-700">
+      <Text font="text-sm/semibold" color="grey-700">
         {label}
       </Text>
     </AppSidebarMenuItemButton>

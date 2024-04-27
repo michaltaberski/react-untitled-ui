@@ -165,8 +165,14 @@ const ButtonBase = styled.button<{
   border-radius: 8px;
 
   outline-width: 0;
-  transition: outline-width 0.15s;
-  transition: background-color 0.15s;
+  transition-timing-function: ease-in;
+  transition:
+    outline-width 0.1s,
+    background-color 0.1s;
+
+  &:disabled {
+    pointer-events: none;
+  }
 
   ${({ $buttonSize }) => PER_BUTTON_SIZE[$buttonSize]}
   ${({ $buttonType }) => PER_BUTTON_TYPE[$buttonType]}
