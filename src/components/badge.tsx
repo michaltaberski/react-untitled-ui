@@ -107,6 +107,27 @@ const BadgeWrapper = styled.div<{ $color: PaletteKey; $size: BadgeSize }>`
   `}
 `;
 
+const IconBadgeWrapper = styled(BadgeWrapper)<{ $size: BadgeSize }>`
+  ${({ $size }) => {
+    console.log($size);
+    if ($size === 'sm') {
+      return css`
+        padding: 3px;
+      `;
+    }
+    if ($size === 'md') {
+      return css`
+        padding: 5px;
+      `;
+    }
+    if ($size === 'lg') {
+      return css`
+        padding: 7px;
+      `;
+    }
+  }}
+`;
+
 export type BadgeProps = {
   color: BadgeColor;
   size?: BadgeSize;
@@ -128,5 +149,21 @@ export const Badge = ({
       {label}
       {endIconName && <Icon iconName={endIconName} size={12} />}
     </BadgeWrapper>
+  );
+};
+
+export const IconBadge = ({
+  color,
+  iconName,
+  size = 'sm',
+}: {
+  color: BadgeColor;
+  iconName: IconName;
+  size?: BadgeSize;
+}) => {
+  return (
+    <IconBadgeWrapper $color={color} $size={size}>
+      <Icon iconName={iconName} size={14} />
+    </IconBadgeWrapper>
   );
 };

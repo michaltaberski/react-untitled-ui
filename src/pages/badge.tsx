@@ -1,4 +1,4 @@
-import { Badge } from '@/components/badge';
+import { Badge, IconBadge } from '@/components/badge';
 import { Page, PageTitle } from '../components/page';
 import { Flex } from '@/layout-helper';
 import { PaletteKey } from '@/tokens/color';
@@ -36,6 +36,9 @@ const BadgePage = () => {
             ))}
             <Badge color={color} label={`Label ${color}`} iconName="user" />
             <Badge color={color} label={`Label ${color}`} endIconName="x" />
+            {(['sm', 'md', 'lg'] as const).map(size => (
+              <IconBadge key={size} color={color} size={size} iconName="plus" />
+            ))}
           </Flex>
         ))}
       </Flex>
